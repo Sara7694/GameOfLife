@@ -1,5 +1,4 @@
 ﻿using GameOfLife.Model;
-using GameOfLife.Model.Interfaces;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
