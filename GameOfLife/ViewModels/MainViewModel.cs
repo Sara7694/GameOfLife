@@ -10,7 +10,7 @@ namespace GameOfLife.ViewModels
 {
     public class MainViewModel : BindableBase
     {
-        CellGrid _cellGrid;
+        CellGridCalculations calculations;
 
         private ObservableCollection<Cell> _cells;
 
@@ -34,13 +34,15 @@ namespace GameOfLife.ViewModels
 
         public MainViewModel()
         {
-            _cellGrid = new CellGrid(10,10);
-            Cells = _cellGrid.Grid;
-            Rows = _cellGrid.Rows;
-            Columns = _cellGrid.Columns;
-            ClearCommand = new DelegateCommand(() => _cellGrid.ClearGrid());
-            RandomPopulationCommand = new DelegateCommand(() => _cellGrid.FillGridRandom(0.3));
-            SimulateOneStepCommand = new DelegateCommand(() => Cells = _cellGrid.SimulateOneStep());
+            
+            calculations = new CellGridCalculations();
+            Rows = 10;
+            Columns = 10; 
+
+            Cells = calculations.GenerateGrid(Rows, Columns);
+            ClearCommand = new DelegateCommand(() => calculations.ClearGrid(Cells));
+            RandomPopulationCommand = new DelegateCommand(() => calculations.FillGridRandom(0.3, Cells));
+            SimulateOneStepCommand = new DelegateCommand(() => Cells = calculations.SimulateOneStep(Cells, Rows, Columns));
         }
     }
 }
