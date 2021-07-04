@@ -71,9 +71,8 @@
         <Button Grid.Row="2"
                 Grid.Column="2"
                 Margin="3"
-                Command="{Binding StartSimulationCommand}">
-            Start Simualtion
-        </Button>
+                Command="{Binding StartSimulationCommand}"
+                Content="{Binding SimulationButtonText}"/>
 
         <Button Grid.Row="2"
                 Grid.Column="3"
